@@ -79,24 +79,22 @@ per = Math.round(per*100)/100;
 
 //STEP 4 
 // Future value
-let per2 = 0;
 const axios = require('axios');
-per2 = frank();
+(async () => {
+let per2 = await frank();
 final_per = per*0.7+per2*0.3
 final_per = Math.round(final_per*100)/100
-console.log(per, per2, final_per);
+console.log("after promise",per, per2, final_per);
+})()
 
 async function frank()
  {
   try {
-    const response = await axios.get('https://finnhub.io/api/v1/stock/price-target?symbol=IBM&token=bsq93d0fkcbdk5653ho0').then(function(response)
-    {
-        per2 = ((response.data.targetMean-curr_cost)/curr_cost)*100;
-        per2 = Math.round(per2*100)/100;
-        console.log(per,per2);
-        return per2;
-    });
-    
+    const response = await axios.get('https://finnhub.io/api/v1/stock/price-target?symbol=IBM&token=bsq93d0fkcbdk5653ho0')
+    let per2 = ((response.data.targetMean-curr_cost)/curr_cost)*100;
+    per2 = Math.round(per2*100)/100;
+    console.log(per,per2);
+    return per2;
   } catch (error) {
     console.log(error);
   }
