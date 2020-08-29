@@ -2,6 +2,7 @@
   <div id="app">
     <div class="mb-4">
   <b-navbar class="justify-content-center" type="dark" variant="dark">
+    <b-navbar-brand>Simplistock</b-navbar-brand>
     <b-navbar-nav >
       <b-nav-item :to="item.route" v-for="item in items" :key="item.message" class="ml-5 navitem"> {{item.message}}</b-nav-item>
 </b-navbar-nav >
