@@ -1,7 +1,8 @@
-const express = require('express');
+const express = require('express')
 const cors = require('cors');
 
 const app = express();
+let reqs = [];
 
 // Middleware
 app.use(cors());
@@ -12,12 +13,17 @@ app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
 
+app.post('get-stocks', (req, res) => {
+    console.log("Request received");
+});
+
 //STEP 1
 let indo = "Airlines"
-const users = require("./condensed"); 
-let x = Object.keys(users).length
+// The file can be replaced with condensed
+// const users = require("./condensed"); 
+// let x = Object.keys(users).length
 let array = []
-array.push(users[indo])
+// array.push(users[indo])
 array = array[0]
 // check against indo let to confirm industry
 
@@ -34,34 +40,35 @@ let hell;
 //console.log(month)
 cost = [] //dummy variable to simulate cost
 final = [] // array to store stocks within the cost threshold
-for (let a = 0; a<array.length; a++)
-{
-    cost[a] = Math.floor(Math.random()*100)
-}
+// for (let a = 0; a<array.length; a++)
+// {
+//     cost[a] = Math.floor(Math.random()*100)
+// }
 
-for (let a = 0; a<array.length; a++)
-{
-//API CALL HERE
-    if (cost[a] <= sum)
-    {
-       final.push(array[a]) 
-    }
-}
+// for (let a = 0; a<array.length; a++)
+// {
+// //API CALL HERE
+//     if (cost[a] <= sum)
+//     {
+//        final.push(array[a]) 
+//     }
+// }
 
 //STEP 3
-//Open/Close, % growth or loss month over month and sum 
-const month = require("./alpha"); 
+//Open/Close, % growth or loss month over month and sum
+// Replace alpha with filename
+// const month = require("./alpha"); 
 let counter = 0;
 let month_list = []
-for (let key in month['Monthly Adjusted Time Series'])
-{
-    counter++;
-    month_list.push(key)
-    if (counter == 6)
-    {
-        break;
-    }
-}
+// for (let key in month['Monthly Adjusted Time Series'])
+// {
+//     counter++;
+//     month_list.push(key)
+//     if (counter == 6)
+//     {
+//         break;
+//     }
+// }
 let per = 0;
 for (counter = 0; counter < month_list.length; counter++)
 {   
@@ -79,23 +86,23 @@ per = Math.round(per*100)/100;
 
 //STEP 4 
 // Future value
-const axios = require('axios');
-(async () => {
-let per2 = await frank();
-final_per = per*0.7+per2*0.3
-final_per = Math.round(final_per*100)/100
-console.log("after promise",per, per2, final_per);
-})()
+// const axios = require('axios');
+// (async () => {
+// let per2 = await frank();
+// final_per = per*0.7+per2*0.3
+// final_per = Math.round(final_per*100)/100
+// console.log("after promise",per, per2, final_per);
+// })()
 
-async function frank()
- {
-  try {
-    const response = await axios.get('https://finnhub.io/api/v1/stock/price-target?symbol=IBM&token=bsq93d0fkcbdk5653ho0')
-    let per2 = ((response.data.targetMean-curr_cost)/curr_cost)*100;
-    per2 = Math.round(per2*100)/100;
-    console.log(per,per2);
-    return per2;
-  } catch (error) {
-    console.log(error);
-  }
-};
+// async function frank()
+//  {
+//   try {
+//     const response = await axios.get('https://finnhub.io/api/v1/stock/price-target?symbol=IBM&token=bsq93d0fkcbdk5653ho0')
+//     let per2 = ((response.data.targetMean-curr_cost)/curr_cost)*100;
+//     per2 = Math.round(per2*100)/100;
+//     console.log(per,per2);
+//     return per2;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
