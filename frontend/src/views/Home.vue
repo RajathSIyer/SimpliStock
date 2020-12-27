@@ -5,7 +5,31 @@
      <h2 id="second-title"> Subheading goes here smaller font</h2>
      <button id="banner-button" class="btn-success" >Find Stocks</button>
       </div>
-       
+
+     <div class="banner-bottom">
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/information-notice-info-ui-tooltip-guide-30515.png" width=100px height=100px object-fit:contain class="displayicon">
+          <h1>What is it?</h1>
+          <h5>Infromation on how to use</h5>
+        </div>
+
+        <div class="col-sm-4">
+          <img src="https://www.nublue.co.uk/images/svg/Website%20&%20Ecommerce%20Technical%20Strategy.svg" width=100px height=100px class="displayicon">
+          <h1> How to use </h1>
+          <h5> You can use this by </h5>
+        </div>
+
+        <div class="col-sm-4">
+          <img src="https://cdn4.iconfinder.com/data/icons/business-and-finance-monochrome-hand-drawn-free-se/100/newspaper-512.png" width=100px height=100px class="displayicon">
+          <h1> Market news </h1>
+          <h5> Read up on the current market news </h5>
+        </div>
+
+      </div>
+
+     </div>
+     
   </div>
 </template>
 
@@ -33,6 +57,8 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+
 }
 
 #main-title{
@@ -63,4 +89,8 @@ margin-top: 5%;
 font-weight: 300;
 }
 
+.row{
+  margin-top:30px;
+}
 </style>
+
