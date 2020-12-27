@@ -99,10 +99,9 @@ html, body{
   height:100%;
 }
 .footer{
-  
   background-color: #383838;
-  position:fixed;
   bottom:0;
+  position:absolute;
   width:100%;
 }
 
