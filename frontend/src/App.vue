@@ -96,12 +96,16 @@ opacity: 100%;
 }
 
 html, body{
-  height:100%;
+   width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
 .footer{
   background-color: #383838;
   bottom:0;
-  position:absolute;
+  position:relative;
   width:100%;
 }
 
