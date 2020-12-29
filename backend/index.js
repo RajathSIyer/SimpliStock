@@ -13,8 +13,14 @@ app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
 
-app.post('get-stocks', (req, res) => {
+app.post('/get-stocks/', (req, res) => {
     console.log("Request received");
+    res.send("Hello World");
+});
+
+app.get('/get-stocks/', (req, res) => {
+    console.log("Request received");
+    res.send("Hello World");
 });
 
 //STEP 1
