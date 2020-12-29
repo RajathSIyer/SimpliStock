@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  
     <div class="">
   <b-navbar class="">
     <b-navbar-brand ><img src="https://i.ibb.co/B2MQcsH/3rd-simpli.png" class="logo"></b-navbar-brand>
@@ -9,8 +10,15 @@
   </b-navbar>
 </div>
     <router-view/>
+
+  <div class="footer">
+    <h8> Copyright &#169; Simplistock 2020 </h8>
   </div>
+
+  </div>
+
 </template>
+
 <script>
 export default {
   el: '#example-1',
@@ -25,6 +33,9 @@ export default {
     }
   }
 }
+
+
+
 </script>
 
 <style>
@@ -35,6 +46,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
 }
 
 #nav {
@@ -82,4 +94,23 @@ opacity: 100%;
 .navbar-nav{
   width:100%;
 }
+
+html, body{
+   width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+.footer{
+  background-color: #383838;
+  bottom:0;
+  position:relative;
+  width:100%;
+}
+
+h8{
+  color:#808080;
+}
+
 </style>
