@@ -56,7 +56,7 @@
       
       <!--Forms the Generate Recommendations button -->
       <b-button type="submit" variant="primary">Generate Recommendations</b-button>
-    </b-form>
+    
 
     <br><br>
 
@@ -118,6 +118,7 @@
     <b-form-group>
     <b-button size="lg" variant="primary">Market News</b-button>
     </b-form-group>
+    </b-form>
     </b-container>
   </div>
 </template>
@@ -149,7 +150,7 @@
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
-        alert(JSON.stringify("Sorry this is not implemented yet :("))
+        this.$router.push('/results')
       },
       onReset(evt) {
         evt.preventDefault()
