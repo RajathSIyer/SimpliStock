@@ -1,3 +1,6 @@
+import $ from 'jQuery'
+
+
 <template>
   <div>
     <b-container>
@@ -55,8 +58,11 @@
     </b-form-group>
       
       <!--Forms the Generate Recommendations button -->
-      <b-button type="submit" variant="primary">Generate Recommendations</b-button>
-    
+      <b-button type="submit" variant="primary" v-if="showGRButton">Generate Recommendations</b-button>
+      
+    </b-form>
+
+    <b-spinner label="Spinning" v-if="showLoading"></b-spinner>
 
     <br><br>
 
@@ -118,14 +124,19 @@
     <b-form-group>
     <b-button size="lg" variant="primary">Market News</b-button>
     </b-form-group>
-    </b-form>
     </b-container>
+    <Results v-bind:resultStocks="resultStocks"/>
   </div>
 </template>
 
 <script>
+  import Results from 'Results.vue'
+  
   export default {
     name:"stock",
+    components: {
+      Results
+    },
     data() {
       return {
         form: {
@@ -142,15 +153,57 @@
           { text: 'Medium Volatillity', value: 'Medium Volatillity' },
           { text: 'Low Volatillity', value: 'Low Volatillity' }
         ],
+        showLoading: false,
+        showGRButton: true,
         chosenIndustries: [],
         price: ['$0'],
-        dividend: ['0%']
+        dividend: ['0%'],
+        resultStocks: {
+          currPrice: [],
+          companyName: [],
+          companySymbol: [],
+          companyDescription: [],
+          companyNews: [],
+          chartdata: [],
+          options: []
+        }
       }
     },
     methods: {
       onSubmit(evt) {
-        evt.preventDefault()
-        this.$router.push('/results')
+        var jQuery = require("jquery");
+        window.jQuery = jQuery;
+        window.$ = jQuery;
+
+      
+        this.showGRButton = false;
+        this.showLoading = true;
+ 
+        var myData = {industries: this.chosenIndustries, price: this.price, dividend:this.dividend};
+        
+       var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://jsonplaceholder.typicode.com/posts",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "processData": false,
+        "data": JSON.stringify(myData)
+        }
+        jQuery.ajax(settings).done((response) => {
+          //Redirect to results page along with sending the data response recieved from backend
+          console.log(response);
+          this.showLoading = false;
+          this.showGRButton = true;
+          
+        });
+        
+      
+        console.log(evt);
+        evt.preventDefault();
+        
       },
       onReset(evt) {
         evt.preventDefault()
@@ -159,6 +212,8 @@
         this.form.name = ''
         this.form.food = null
         this.form.checked = []
+        this.showGRButton = true;
+        this.showLoading = false;
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
