@@ -18,6 +18,8 @@
 <script>
 import StockResult from '../components/StockResult'
 export default {
+    name: "Results",
+    props: ['resultStocks'],
     components: {
         'stock-result': StockResult,
     },
